@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RVTools Analyzer</title>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="hero">
+      <h1>RVTools Analyzer</h1>
+      <p>Upload an RVTools Excel export to generate quick infrastructure assessment tables.</p>
+    </header>
+
+    <section class="card upload-card">
+      <h2>Upload RVTools Report</h2>
+      <input type="file" id="upload" accept=".xlsx,.xls" />
+      <p class="hint">Everything is processed locally in your browser. No file is uploaded anywhere.</p>
+      <div id="status" class="status">Waiting for file...</div>
+    </section>
+
+    <section class="grid stats-grid" id="summaryStats"></section>
+
+    <section class="grid two-col">
+      <div class="card">
+        <h2>Detected Sheets</h2>
+        <div id="detectedSheets"></div>
+      </div>
+      <div class="card">
+        <h2>Executive Summary</h2>
+        <div id="executiveSummary" class="summary-box">Upload a file to generate a summary.</div>
+      </div>
+    </section>
+
+    <section class="grid two-col">
+      <div class="card">
+        <h2>Assessment Observations</h2>
+        <div class="toolbar">
+          <button id="copyObservationsBtn" type="button">Copy Observations</button>
+        </div>
+        <div id="observations"></div>
+      </div>
+      <div class="card">
+        <h2>Actions</h2>
+        <div class="toolbar vertical">
+          <button id="downloadClusterCsvBtn" type="button">Download Cluster CSV</button>
+          <button id="downloadHostCsvBtn" type="button">Download Host CSV</button>
+          <button id="downloadPortgroupCsvBtn" type="button">Download Port Group CSV</button>
+          <button id="downloadVersionCsvBtn" type="button">Download ESXi Version CSV</button>
+          <button id="downloadHardwareCsvBtn" type="button">Download Hardware Age CSV</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Cluster Summary</h2>
+      <div id="clusterSummary"></div>
+    </section>
+
+    <section class="card">
+      <h2>Host Summary</h2>
+      <div id="hostSummary"></div>
+    </section>
+
+    <section class="grid two-col">
+      <div class="card">
+        <h2>ESXi Version Distribution</h2>
+        <div id="esxiVersion"></div>
+      </div>
+      <div class="card">
+        <h2>VM Distribution by Port Group</h2>
+        <div id="portgroupTable"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Server Hardware Age</h2>
+      <div id="hardwareAge"></div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
